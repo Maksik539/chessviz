@@ -13,28 +13,46 @@ struct data_figure {
     vector<double> perimetr;
     vector<double> area;
 } figure;
-int get_num(string com, int k)
+void out_figure(int k)
 {
-    string num;
-    for (long unsigned int i = k; i < com.length(); i++) {
-        if (com[i] != ' ' && com[i] != ',') {
+    cout << figure.name[k] << endl;
+    cout << figure.x[k] << endl;
+    cout << figure.y[k] << endl;
+    cout << figure.r[k] << endl;
+}
+int q = 0;
+int get_num(string com)
+{
+    string num = "";
+    for (int i = q; i < com.length(); i++) {
+        if ((com[i] == ' ') || (com[i] == ',')|| (com[i] == ')')) {
+            break;
+        } else {
             num += com[i];
+            q++;
         }
     }
+    q+=2;
     return stoi(num);
 }
 void get_figure()
 {
     string com;
     getline(cin, com);
-    cout << com << endl;
     if (com.find("circle") != -1) {
         figure.name.push_back("circle");
-        figure.x.push_back(get_num(com, 7));
+        q = 7;
+        figure.x.push_back(get_num(com));
+        //out_figure(0);
+        figure.y.push_back(get_num(com));
+		//out_figure(0);
+        figure.r.push_back(get_num(com));
     }
+	q=0;
 }
 
 int main()
 {
-    get_figure();
+get_figure();
+out_figure(0);
 }
