@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
+#include <cstdlib>
 #include <cmath>
 const double PI = 3.1415926535;
 
@@ -59,7 +60,7 @@ void get_figure()
 	string com;
 	while (com.find("stop")) {
 		getline(cin, com);
-		if (com.find("circle") != -1) {
+		if (com.find("circle")!= -1) {
 			figure.name.push_back("circle");
 			q = 7;
 			figure.x.push_back(get_num(com));
@@ -70,6 +71,7 @@ void get_figure()
 		}
 		q = 0;
 	}
+	cout << endl;
 }
 
 
@@ -79,3 +81,4 @@ int main()
 	out_figure();
 
 }
+
