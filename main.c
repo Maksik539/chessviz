@@ -70,6 +70,7 @@ int get_num(string com, int pos, int start_pos)
     int q = start_pos;
     for (int j = 0; j <= pos; j++)
     {
+        num = "";
         for (int i = q; i < e; i++) {
             if ((com[i] == ' ') || (com[i] == ',') || (com[i] == ')')) {
                 break;
@@ -95,9 +96,9 @@ void get_figure()
             // q = 7;
             figure.x.push_back(get_num(com, 0, 7));
             // out_figure(0);
-            figure.y.push_back(get_num(com, 0, 7));
+            figure.y.push_back(get_num(com, 1, 7));
             // out_figure(0);
-            figure.r.push_back(get_num(com, 0, 7));
+            figure.r.push_back(get_num(com, 2, 7));
         }
         // q = 0;
     }
