@@ -1,1 +1,4 @@
-language: C
+language: cpp
+compiler: gcc
+script: make
+os: linux
