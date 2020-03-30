@@ -1,4 +1,4 @@
 DEPS = area.h
 DEPS = perimeter.h
-main.exe: main.c
-	g++ -Wall -Werror -o main.exe main.c -lm
+main.exe: src\main.c
+	g++ -Wall -Werror -o main.exe src\main.c -lm
