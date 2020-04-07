@@ -1,8 +1,5 @@
 DEPS = area.h
 DEPS = perimeter.h
-main.exe: src\main.c
-	g++ -Wall -Werror -o main.exe src\main.c -lm
-
 all: test
 
 remake: clean all
@@ -12,5 +9,7 @@ remake: clean all
 
 test: main.o ctest.h mytests.o
 	$(CC) $(LDFLAGS) main.o mytests.o -o test
+main.exe: src/main.c
+	g++ -Wall -Werror -o main.exe src/main.c -lm
 clean:
 	rm -rf *o hello
