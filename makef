@@ -1,15 +1,24 @@
-DEPS = area.h
-DEPS = perimeter.h
-all: test
+all: bin/main.exe
+test: bin/test.exe
 
-remake: clean all
+bin/test.exe: build/test/main.o build/test/test_func.o build/src/func.o 
+	g++ -Wall -I src -Werror -o bin/test.exe build/test/main.o build/src/func.o build/test/test_func.o -lm
 
-%.o: %.c ctest.h
-	$(CC) $(CCFLAGS) -c -o $@ $<
+bin/main.exe: build/src/main.o build/src/func.o
+	g++ -Wall -Werror -o bin/main.exe build/src/main.o build/src/func.o -lm
 
-test: main.o ctest.h mytests.o
-	$(CC) $(LDFLAGS) main.o mytests.o -o test
-main.exe: src/main.c
-	g++ -Wall -Werror -o main.exe src/main.c -lm
+build/src/main.o: src/main.cpp
+	g++ -c -o build/src/main.o src/main.cpp -lm
+
+build/src/func.o: src/func.cpp
+	g++ -c -o  build/src/func.o src/func.cpp -lm
+
+build/test/main.o: test/main.cpp
+	g++ -c -Wall -I src -o build/test/main.o test/main.cpp -lm
+
+build/test/test_func.o: test/test_func.cpp
+	g++ -c -Wall -I src -o  build/test/test_func.o test/test_func.cpp -lm
+
+
 clean:
-	rm -rf *o hello
+	rm -rf bin/*exe build/src/*o build/test/*o
