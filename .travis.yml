@@ -1,5 +1,5 @@
 language: cpp
-
+compiler: gcc
 
 
 os: linux
@@ -11,10 +11,9 @@ addons:
       - g++-7
 
 script:
-  - make && make run && make check  
+  - make  
   - export CC=gcc-7
   - export CXX=g++-7
   - cmake --version
   - git ls-files src/ | xargs clang-format -i && git diff --exit-code
 
-compiler: gcc
