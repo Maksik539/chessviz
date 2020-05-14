@@ -11,8 +11,8 @@ addons:
       - g++-7
 
 script:
-  - make
-  - git ls-files src/ | xargs clang-format -i && git diff --exit-code  
+  - make -f makef && make -f makef test
+  - git ls-files src/ | xargs clang-format -i 
   - export CC=gcc-7
   - export CXX=g++-7
   - cmake --version
