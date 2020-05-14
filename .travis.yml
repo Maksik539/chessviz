@@ -1,5 +1,10 @@
 language: cpp
-dist: xenial
+
 script:
+  - make -f makef test && make -f makef
   - git ls-files src/ | xargs clang-format -i && git diff --exit-code
   - git ls-files test/ | xargs clang-format -i && git diff --exit-code
+
+compiler: gcc
+
+dist: xenial

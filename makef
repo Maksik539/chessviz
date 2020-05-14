@@ -18,7 +18,5 @@ build/src/func.o: src/func.cpp
 build/test/test_func.o: test/test_func.cpp
 	g++ -c -Wall -I src -o  build/test/test_func.o test/test_func.cpp -lm
 
-
-
 clean:
 	rm -rf bin/*exe build/src/*o build/test/*o
