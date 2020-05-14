@@ -15,5 +15,24 @@ script:
   - export CC=gcc-7
   - export CXX=g++-7
   - cmake --version
+  - make CXX=clang++-6.0
+  - make clean
+  - make CXX=g++-8
+  - cppcheck --enable=all .
+  - sloccount *.cpp
   - git ls-files src/ | xargs clang-format -i && git diff --exit-code
 
+matrix:
+  include:
+    - os: linux
+      addons:
+        apt:
+          update: true
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-trusty-8.0
+          packages:
+            - clang++-8.0
+            - g++-8
+            - cppcheck
+            - sloccount
