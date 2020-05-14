@@ -1,11 +1,13 @@
 all: bin/main.exe
 test: bin/test.exe
 
-bin/test.exe: build/test/main.o build/test/test_func.o build/src/func.o 
-	g++ -Wall -I src -Werror -o bin/test.exe build/test/main.o build/src/func.o build/test/test_func.o -lm
+bin/test.exe: build/test/test_func.o build/src/func.o 
+	g++ -Wall -I src -Werror -o bin/test.exe build/src/func.o build/test/test_func.o -lm
+	bin/test.exe
 
 bin/main.exe: build/src/main.o build/src/func.o
-	g++ -Wall -Werror -o bin/main.exe build/src/main.o build/src/func.o -lm
+	g++ -std=c++11 -Wall -Werror -o bin/main.exe build/src/main.o build/src/func.o -lm
+	bin/main.exe
 
 build/src/main.o: src/main.cpp
 	g++ -c -o build/src/main.o src/main.cpp -lm
@@ -13,11 +15,9 @@ build/src/main.o: src/main.cpp
 build/src/func.o: src/func.cpp
 	g++ -c -o  build/src/func.o src/func.cpp -lm
 
-build/test/main.o: test/main.cpp
-	g++ -c -Wall -I src -o build/test/main.o test/main.cpp -lm
-
 build/test/test_func.o: test/test_func.cpp
 	g++ -c -Wall -I src -o  build/test/test_func.o test/test_func.cpp -lm
+
 
 
 clean:

@@ -1,16 +1,5 @@
 language: cpp
-compiler: gcc
-
-os: linux
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-7
-
+dist: xenial
 script:
-  - export CC=gcc-7
-  - export CXX=g++-7
-  - cmake --version
   - git ls-files src/ | xargs clang-format -i && git diff --exit-code
+  - git ls-files test/ | xargs clang-format -i && git diff --exit-code
