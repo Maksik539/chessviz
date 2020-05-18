@@ -1,8 +1,12 @@
 language: cpp
 dist: xenial
+
 compiler:
-- clang
+  - clang
+
 os:
-- linux
+  - linux
+
+
 script:
   - git ls-files src/ | xargs clang-format -i && git diff --exit-code

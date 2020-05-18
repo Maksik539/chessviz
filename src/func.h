@@ -5,10 +5,9 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <vector>
 #include <string.h>
+#include <vector>
 using namespace std;
-
 
 float perimeters(float r);
 
@@ -19,6 +18,5 @@ void out_figure();
 int get_num(string com, int pos, int start_pos);
 
 void get_figure();
-
 
 #endif
