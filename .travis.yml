@@ -4,8 +4,5 @@ compiler:
 - clang
 os:
 - linux
-branches:
-  only:
-  - master
 script:
   - git ls-files src/ | xargs clang-format -i && git diff --exit-code
