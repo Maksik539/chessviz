@@ -1,19 +1,17 @@
 language: cpp
-compiler: gcc
-
-
-os: linux
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-7
-
+dist: xenial
+compiler:
+- clang
+os:
+- linux
+branches:
+  only:
+  - master
+notifications:
+  email:
+    recipients:
+    - goryachev.stepan@yandex.ru
+    on_success: never
+    on_failure: always
 script:
-  - make -f makef && make -f makef test
-  - git ls-files src/ | xargs clang-format -i 
-  - export CC=gcc-7
-  - export CXX=g++-7
-  - cmake --version
- 
+  - git ls-files src/ | xargs clang-format -i && git diff --exit-code
