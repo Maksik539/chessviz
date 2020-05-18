@@ -7,11 +7,5 @@ os:
 branches:
   only:
   - master
-notifications:
-  email:
-    recipients:
-    - goryachev.stepan@yandex.ru
-    on_success: never
-    on_failure: always
 script:
   - git ls-files src/ | xargs clang-format -i && git diff --exit-code
