@@ -38,3 +38,15 @@ TEST_CASE("Input check Circle", "[proverka]")
     REQUIRE(k==d);
     REQUIRE(b==n);
 }
+
+TEST_CASE("Taking parameters from input", "[get_num]")
+{
+	string a="circle(1, 2, 3)";
+	const int start_pos=7;
+	const int pos0=0;
+	const int pos1=1;
+	const int pos2=2;
+	REQUIRE(get_num(a, pos0, start_pos)==1);
+	REQUIRE(get_num(a, pos1, start_pos)==2);
+	REQUIRE(get_num(a, pos2, start_pos)==3);
+}
