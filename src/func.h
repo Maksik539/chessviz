@@ -15,6 +15,8 @@ float areas(float r);
 
 void out_figure();
 
+int proverka(string com);
+
 int get_num(string com, int pos, int start_pos);
 
 void get_figure();

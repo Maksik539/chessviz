@@ -18,4 +18,23 @@ TEST_CASE("Perimeters are computed", "[perimeters]")
     REQUIRE( expected== result );
 }
 
+TEST_CASE("Areas are computed", "[areas]")
+{
+    const float r = 1;
+    const float result = areas(r);
+    const float expected = 3.14;
+    REQUIRE( expected== result );
+}
 
+TEST_CASE("Input check Circle", "[proverka]")
+{
+	int k=0,b=0;
+	const int d=1;
+	const int n=-1;
+	string com="circle";
+	string comm="square";
+    k=proverka(com);
+    b=proverka(comm);
+    REQUIRE(k==d);
+    REQUIRE(b==n);
+}

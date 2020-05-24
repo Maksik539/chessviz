@@ -90,15 +90,22 @@ int get_num(string com, int pos, int start_pos)
     }
     return stoi(num);
 }
-
+int proverka(string com){
+	size_t npos = -1;
+	if(com.find("circle") != npos){
+		return 1;
+	}
+	else return -1;
+}
 void get_figure()
 {
     size_t npos = -1;
-    // int q = 0;
+    int a = 0;
     string com;
     while (com.find("stop")) {
         getline(cin, com);
-        if (com.find("circle") != npos) {
+        a=proverka(com);
+        if (a != npos) {
             figure.name.push_back("circle");
             // q = 7;
             figure.x.push_back(get_num(com, 0, 7));
@@ -107,6 +114,10 @@ void get_figure()
             // out_figure(0);
             figure.r.push_back(get_num(com, 2, 7));
         }
+        else {
+        	cout<<endl<<"Incorrect entry!Enter again:";
+        	getline(cin, com);
+		}
         // q = 0;
     }
     cout << endl;
