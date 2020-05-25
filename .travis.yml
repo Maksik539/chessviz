@@ -1,27 +1,25 @@
-language: generic
-os: osx
-matrix:
-  include:
-    - os: linux
-      env: COMPILER_NAME=gcc CXX=g++-5 CC=gcc-5
-      addons:
-        apt:
-          packages:
-            - g++-5
-          sources: &sources
-            - llvm-toolchain-precise-3.8
-            - ubuntu-toolchain-r-test
-    - os: linux
-      env: COMPILER_NAME=clang CXX=clang++-3.8 CC=clang-3.8
-      addons:
-        apt:
-          packages:
-            - clang-3.8
+language: cpp
+compiler: gcc
+before_install:
+  - wget https://googletest.googlecode.com/files/gtest-1.7.0.zip
+  - unzip gtest-1.7.0.zip 
+  - cd gtest-1.7.0/
+  - ./configure --prefix=$TRAVIS_BUILD_DIR --with-pthreads=no
+  - make
+  - mkdir $TRAVIS_BUILD_DIR/include/
+  - cp -r include/gtest $TRAVIS_BUILD_DIR/include
+  - mkdir $TRAVIS_BUILD_DIR/lib/
+  - cp lib/.libs/* $TRAVIS_BUILD_DIR/lib/
+  - cd ..
+  - export CPLUS_INCLUDE_PATH=$TRAVIS_BUILD_DIR/include:$CPLUS_INCLUDE_PATH
+  - export LIBRARY_PATH=$TRAVIS_BUILD_DIR/lib:$LIBRARY_PATH
+  - export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/lib:$LD_LIBRARY_PATH
+  - cd cpp
 script:
   - make
   - git ls-files src/ | xargs clang-format -i && git diff --exit-code
   - git ls-files test/ | xargs clang-format -i && git diff --exit-code
 
-compiler: gcc
+
 
 dist: xenial
