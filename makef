@@ -4,7 +4,6 @@ test: bin/test.exe
 
 bin/test.exe: build/test/test_func.o build/src/func.o 
 	g++ -Wall -I src -Werror -o bin/test.exe build/src/func.o build/test/test_func.o -lm
-	bin/test.exe
 
 bin/main.exe: build/src/main.o build/src/func.o
 	g++ -std=c++17 -Wall -Werror -o bin/main.exe build/src/main.o build/src/func.o -lm
@@ -22,7 +21,7 @@ clean:
 	rm -rf bin/*exe build/src/*o build/test/*o
 
 run_main:
-	bin/main.exe
+	./bin/main.exe
 
 run_test:
-	bin/test.exe
+	./bin/test.exe
