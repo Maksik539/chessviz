@@ -1,6 +1,6 @@
 .PHONY: clean
-all: bin/main bin/test
-test: bin/test
+all: bin/test
+test: bin/main
 
 bin/test: build/test/test_func.o build/src/func.o 
 	g++ -Wall -I src -Werror -o bin/test build/src/func.o build/test/test_func.o -lm
