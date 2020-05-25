@@ -1,12 +1,12 @@
 .PHONY: clean
-all: bin/main.exe bin/test.exe
-test: bin/test.exe
+all: bin/main bin/test
+test: bin/test
 
-bin/test.exe: build/test/test_func.o build/src/func.o 
-	g++ -Wall -I src -Werror -o bin/test.exe build/src/func.o build/test/test_func.o -lm
+bin/test: build/test/test_func.o build/src/func.o 
+	g++ -Wall -I src -Werror -o bin/test build/src/func.o build/test/test_func.o -lm
 
-bin/main.exe: build/src/main.o build/src/func.o
-	g++ -std=c++17 -Wall -Werror -o bin/main.exe build/src/main.o build/src/func.o -lm
+bin/main: build/src/main.o build/src/func.o
+	g++ -std=c++17 -Wall -Werror -o bin/main build/src/main.o build/src/func.o -lm
 
 build/src/main.o: src/main.cpp
 	g++ -std=c++17 -c -o build/src/main.o src/main.cpp -lm
@@ -21,7 +21,7 @@ clean:
 	rm -rf bin/*exe build/src/*o build/test/*o
 
 run_main:
-	./bin/main.exe
+	./bin/main
 
 run_test:
-	./bin/test.exe
+	./bin/test
