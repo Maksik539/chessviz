@@ -13,10 +13,10 @@ test: bin/main
 	g++ -std=c++17 -c -o ./build/src/main.o ./src/main.cpp -lm
 
 ./build/src/func.o: ./src/func.cpp
-	g++ -c -o  ./build/src/func.o ./src/func.cpp -lm
+	g++ -std=c++17  -c -o  ./build/src/func.o ./src/func.cpp -lm
 
 ./build/test/test_func.o: ./test/test_func.cpp
-	g++ -c -Wall -I src -o  ./build/test/test_func.o ./test/test_func.cpp -lm
+	g++ -std=c++17  -c -Wall -I src -o  ./build/test/test_func.o ./test/test_func.cpp -lm
 
 clean:
 	rm -rf bin/* build/src/*o build/test/*o
