@@ -1,20 +1,23 @@
-language: cpp
-compiler: gcc
+dist: trusty
+sudo: required
+language:
+  - cpp
+compiler:
+  - gcc
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - gcc-7
-      - g++-7
+      - gcc-6
+      - g++-6
       - cmake
 script:
-  - export CC=gcc-7
-  - export CXX=g++-7
+  - ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
+  - ln -s /usr/bin/g++-6 /usr/local/bin/g++
+  - export CC=/usr/bin/gcc-6
+  - export CXX=/usr/bin/g++-6
+  - gcc -v && g++ -v && cmake --version
   - make
   - git ls-files src/ | xargs clang-format -i && git diff --exit-code
   - git ls-files test/ | xargs clang-format -i && git diff --exit-code
-
-
-
-dist: xenial
