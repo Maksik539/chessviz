@@ -11,5 +11,6 @@ install:
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
 
 script:
-  - make
+  - g++ -Wall -I src -Werror -o bin/test build/src/func.o build/test/test_func.o -lm
+  - ./bin/test
 dist: xenial
