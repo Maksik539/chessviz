@@ -2,15 +2,15 @@
 all: bin/test
 test: bin/main
 
+./bin/test: ./build/test/test_func.o ./build/src/func.o 
+	g++ -Wall -I src -Werror -o ./bin/test ./build/src/func.o ./build/test/test_func.o -lm
+	./bin/test
+
 ./bin/main: ./build/src/main.o ./build/src/func.o
 	g++ -std=c++17 -Wall -Werror -o ./bin/main ./build/src/main.o ./build/src/func.o -lm
 
 ./build/src/main.o: ./src/main.cpp
 	g++ -std=c++17 -c -o ./build/src/main.o ./src/main.cpp -lm
-
-./bin/test: ./build/test/test_func.o ./build/src/func.o 
-	g++ -Wall -I src -Werror -o ./bin/test ./build/src/func.o ./build/test/test_func.o -lm
-	./bin/test
 
 ./build/src/func.o: ./src/func.cpp
 	g++ -c -o  ./build/src/func.o ./src/func.cpp -lm
