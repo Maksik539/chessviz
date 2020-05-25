@@ -18,7 +18,7 @@ build/test/test_func.o: test/test_func.cpp
 	g++ -std=c++11 -c -Wall -I src -o  build/test/test_func.o test/test_func.cpp -lm
 
 clean:
-	rm -rf bin/*exe build/src/*o build/test/*o
+	rm -rf bin/* build/src/*o build/test/*o
 
 run_main:
 	./bin/main
