@@ -1,5 +1,8 @@
 main.exe
 .main.c.swp
 .main.c.swo
+build/src/main.o
+build/src/func.o
+build/test/*o
 bin/main.exe
 bin/test.exe
