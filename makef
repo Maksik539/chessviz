@@ -1,4 +1,5 @@
-all: bin/main.exe
+.PHONY: clean
+all: bin/main.exe bin/test.exe
 test: bin/test.exe
 
 bin/test.exe: build/test/test_func.o build/src/func.o 
@@ -17,7 +18,11 @@ build/src/func.o: src/func.cpp
 build/test/test_func.o: test/test_func.cpp
 	g++ -std=c++11 -c -Wall -I src -o  build/test/test_func.o test/test_func.cpp -lm
 
-
-
 clean:
 	rm -rf bin/*exe build/src/*o build/test/*o
+
+run_main:
+	bin/main.exe
+
+run_test:
+	bin/test.exe
