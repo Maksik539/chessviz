@@ -1,5 +1,5 @@
 language: cpp
-
+os: windows
 script:
   - make && make run_main && make run_test 
   - git ls-files src/ | xargs clang-format -i && git diff --exit-code
